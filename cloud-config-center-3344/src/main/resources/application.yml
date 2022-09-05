@@ -10,16 +10,10 @@ spring:
         git:
           uri: git@github.com:yuyong123666/springcloud-config.git #github上面仓库的地址
           # 搜索目录
-#          username: yuyong123666
-#          password: yy1314yy.
-#          force-pull: true
-
           search-paths:
             - springcloud-config
-          # 读取分支
-
+      # 读取分支
       label: master
-
 
 # 服务注册到eureka地址
 eureka:
