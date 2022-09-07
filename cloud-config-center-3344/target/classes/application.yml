@@ -10,67 +10,9 @@ spring:
         git:
           uri: git@github.com:yuyong123666/springcloud-config.git #github上面仓库的地址
           # 搜索目录
-#          username: yuyong123666
-#          password: yy1314yy.
-#          force-pull: true
           search-paths:
             - springcloud-config
-          # 读取分支
-          strictHostKeyChecking: false
-          private-key:
-            -----BEGIN RSA PRIVATE KEY-----
-            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
-            -----END RSA PRIVATE KEY-----
-      #        credhub:
-#          read-timeout: 100000
+      # 读取分支
       label: master
 
 # 服务注册到eureka地址
