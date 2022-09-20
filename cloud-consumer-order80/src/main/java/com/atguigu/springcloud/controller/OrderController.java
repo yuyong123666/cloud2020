@@ -44,8 +44,11 @@ public class OrderController {
     }
 
 
-//    public String getPaymentLB() {
-//
-//    }
+    // =======zipkin + sleuth
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin() {
+        String result = restTemplate.getForObject(PAYMENT_URL + "/payment/zipkin", String.class);
+        return result;
+    }
 
 }
