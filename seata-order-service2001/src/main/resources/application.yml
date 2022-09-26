@@ -1,0 +1,34 @@
+server:
+  port: 2001
+
+spring:
+  application:
+    name: seata-order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_order
+    username: root
+    password: yy1314yy
+  main:
+    allow-circular-references: true
+# 设置Feign客户端所用的时间
+feign:
+  client:
+    config:
+      default:
+        # 指的是连接所用的时间，适用于网络状况正常情况下，两端连接所用的时间
+        connect-timeout: 5000
+        # 指的是建立连接后从服务器读取到可用资源所用的时间
+        read-timeout: 5000
+logging:
+  level:
+    io:
+      seata: info
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.atguigu.spring.alibaba.dao

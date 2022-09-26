@@ -4,6 +4,7 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
+import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +48,16 @@ public class CircleBreakerController {
     public CommonResult<Payment> blockHandler(@PathVariable("id") Integer id, BlockException e) {
         Payment payment = new Payment(id, "null");
         return new CommonResult<Payment>(445, "blockHandler-sentinel限流" + e.getMessage(), payment);
+    }
+
+
+    // ==========OpenFeign
+    @Resource
+    private PaymentService paymentService;
+
+    @GetMapping(value = "/consumer/paymentSql/{id}")
+    CommonResult<Payment> paymentSql(@PathVariable("id") Long id){
+        return paymentService.paymentSql(id);
     }
 
 }
